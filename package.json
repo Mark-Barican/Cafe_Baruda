@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "prebuild": "node scripts/prepare-build.mjs",
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/export-public.mjs",
     "start": "next start",
     "lint": "eslint ."
   },

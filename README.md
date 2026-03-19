@@ -8,6 +8,7 @@ Production-ready Next.js (App Router) cafe website with data-driven menu renderi
 - React Server Components (default) with a client component for menu filtering/search
 - `papaparse` + `xlsx` for CSV/Excel parsing
 - `react-icons` for iconography
+- Vercel Functions (`api/orders.js`) for Neon-backed POS persistence
 
 ## Project Structure
 
@@ -40,6 +41,8 @@ npm run build
 npm run start
 ```
 
+Build output is exported to `public/` for static hosting workflows.
+
 ## Deploy to Vercel
 
 1. Push this project to a Git repository.
@@ -48,9 +51,9 @@ npm run start
    - `DATABASE_URL` = your Neon connection string
    - `GBP_TO_PHP_RATE` = GBP to PHP conversion rate (optional, defaults to `73`)
 4. Keep default settings:
-   - Framework Preset: Next.js
+   - Framework Preset: Other
    - Build Command: `npm run build`
-   - Output Directory: auto
+   - Output Directory: `public`
 5. Deploy.
 
 ## Data Source Notes
@@ -64,6 +67,7 @@ npm run start
 
 - POS orders are submitted from `/pos` to `POST /api/orders`.
 - Recent persisted orders can be read via `GET /api/orders?limit=25` and viewed at `/pos/history`.
+- Vercel function file: `api/orders.js`.
 - The API persists records into Neon Postgres using `DATABASE_URL`.
 - Tables are created automatically on first order write:
   - `orders`
