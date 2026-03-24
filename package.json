@@ -7,7 +7,11 @@
     "dev": "next dev",
     "build": "next build && node scripts/export-public.mjs",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test:e2e": "node tests/test.js",
+    "test:e2e:chrome": "cross-env BROWSER=chrome node tests/test.js",
+    "test:e2e:brave": "cross-env BROWSER=brave node tests/test.js",
+    "test:e2e:firefox": "cross-env BROWSER=firefox node tests/test.js"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
@@ -19,6 +23,8 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
+    "selenium-webdriver": "^4.28.0",
     "@types/node": "^22.15.30",
     "@types/papaparse": "^5.3.16",
     "@types/react": "^19.2.2",
